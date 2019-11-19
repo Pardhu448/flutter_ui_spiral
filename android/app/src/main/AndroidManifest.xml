@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="com.example.mdc100series">
+    package="com.example.spiral_ver_01">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- The INTERNET permission is required for development. Specifically,
          flutter needs it to communicate with the running application

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:Spiral/players.dart';
 
-class AutoComplete extends StatefulWidget {
+class MatchedLocation extends StatefulWidget {
   @override
   _AutoCompleteState createState() => new _AutoCompleteState();
 }
 
-class _AutoCompleteState extends State<AutoComplete> {
+class _AutoCompleteState extends State<MatchedLocation> {
   GlobalKey<AutoCompleteTextFieldState<Players>> key = new GlobalKey();
 
   AutoCompleteTextField searchTextField;

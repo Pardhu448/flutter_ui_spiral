@@ -1,4 +1,3 @@
-import 'package:Spiral/chooseLocation.dart';
 import 'package:Spiral/matchedLocation.dart';
 import 'package:Spiral/suggestMeetingPlace.dart';
 import 'package:flutter/material.dart';
@@ -10,16 +9,16 @@ import 'auth_provider.dart';
 //import 'package:permission/permission.dart';
 //import 'package:permission_handler/permission_handler.dart';
 
-class SpiralMap extends StatefulWidget {
+class LocationsMap extends StatefulWidget {
 
   //SpiralMap({this.onSignedOut});
   //final VoidCallback onSignedOut;
 
   @override
-  _SpiralMapState createState() => _SpiralMapState();
+  _LocationMapState createState() => _LocationMapState();
 }
 
-class _SpiralMapState extends State<SpiralMap> {
+class _LocationMapState extends State<LocationsMap> {
   GoogleMapController mapController;
 
   static final LatLng _center = const LatLng(19.118427, 72.912080);
@@ -112,20 +111,32 @@ class _SpiralMapState extends State<SpiralMap> {
               onCameraMove: _onCameraMove,
               ),
             Container(
-              alignment: Alignment(0.0, 1.0),
-              child: RaisedButton(
-                child: Text('Chat with Someone Nearby!'),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LocationsMap())
-                  );
-                },
-                color: Theme.of(context).primaryColorLight,
-                ),
-                ),
-          ],
-      );
-  }
-}
+                alignment: Alignment(0.0, 1.0),
+                child: AnimatedContainer(
+                      child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                          SizedBox(height: 4,),
+                                          Text('Hello Partha,', textAlign: TextAlign.center,
+                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22 ), ),
+                                          Divider(height: 2.0, thickness: 3.0,),// SizedBox(height: 2.0,),
+                                         MatchedLocation(),
+                                         ],
+                                  ),
+                                  // Use the properties stored in the State class.
+                      decoration: BoxDecoration(
+                                     color: Theme.of(context).primaryColor,
+                                     borderRadius: _borderRadius,
+                                    ),
+                     // Define how long the animation should take.
+                     duration: Duration(seconds: 1),
+                     // Provide an optional curve to make the animation feel smoother.
+                     curve: Curves.fastOutSlowIn,
+                     height: _height,
+                )
+               )
+              ],
+             );
+           }
+       }
 

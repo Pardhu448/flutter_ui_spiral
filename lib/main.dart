@@ -15,6 +15,6 @@
 import 'package:flutter/material.dart';
 import 'package:Spiral/app.dart';
 
-import 'auth.dart';
+//import 'auth.dart';
 void main() => runApp(SpiralApp());
 

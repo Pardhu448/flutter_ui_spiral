@@ -1,7 +1,7 @@
 //import 'dart:ffi';
 
 import 'package:Spiral/auth_provider.dart';
-import 'package:Spiral/selectMeetingPlace.dart';
+import 'package:Spiral/matchedLocation.dart';
 import 'package:Spiral/suggestMeetingPlace.dart';
 import 'package:Spiral/spiral_map.dart';
 //import 'package:Spiral/home.dart';
@@ -18,12 +18,12 @@ class RootPage extends StatefulWidget {
   }
 
 enum AuthStatus {
-  notSignedInd,
+  notSignedIn,
   signedIn
 }
 
 class _RootPageState extends State<RootPage> {
-  AuthStatus _authStatus = AuthStatus.notSignedInd;
+  AuthStatus _authStatus = AuthStatus.notSignedIn;
 
  @override
  void didChangeDependencies() {
@@ -32,7 +32,7 @@ class _RootPageState extends State<RootPage> {
     var auth = Provider.of<AuthProvider>(context);
     auth.auth.currentUser().then((userId) {
      setState(() {
-       _authStatus = userId == null ? AuthStatus.notSignedInd : AuthStatus.signedIn;
+       _authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
      });
     });
   }
@@ -45,14 +45,14 @@ class _RootPageState extends State<RootPage> {
 
   void _signedOut(){
     setState(() {
-      _authStatus = AuthStatus.notSignedInd;
+      _authStatus = AuthStatus.notSignedIn;
     });
   }
 
   @override
   Widget build(BuildContext context){
     switch(_authStatus){
-      case AuthStatus.notSignedInd:
+      case AuthStatus.notSignedIn:
         return LoginPage(onSignedIn: _signedIn);
       case AuthStatus.signedIn:
         return HomePage(onSignedOut: _signedOut);
